@@ -1,0 +1,90 @@
+{
+  "name": "dashboard-v1",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "keywords": [],
+  "author": "",
+  "private": true,
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "npm run --silent lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "babel": {
+    "extends": "./config/babel.config.json"
+  },
+  "prettier": "./config/code-style/prettier.config.json",
+  "scripts": {
+    "start": "webpack-dev-server --config ./config/app-webpack/webpack.dev.js --open",
+    "build": "webpack --config ./config/app-webpack/webpack.prod.js",
+    "serve-prod": "npx serve --config ./config/local-serve.config.json",
+    "debug-webpack": "webpack --config ./config/app-webpack/webpack.prod.js --progress --color --display-error-details",
+    "test": "jest --config config/test/jest.config.json --coverage",
+    "lint": "npm run lint:js -s; npm run lint:scss -s",
+    "lint:js": "eslint --ext js,jsx src --config ./config/code-style/eslint.config.json",
+    "lint:scss": "stylelint 'src/**/*.scss' --config ./config/code-style/stylelint.config.json; exit 0",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "autoprefixer": "^9.6.1",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "file-loader": "^4.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "redux-mock-store": "^1.5.3",
+    "sass-loader": "^7.1.0",
+    "serve": "^11.1.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-sass-guidelines": "^6.0.0",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
+  }
+}
