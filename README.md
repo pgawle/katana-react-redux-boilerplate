@@ -2,7 +2,7 @@
 _last readme update: 26 July 2019_
 
 
-##Quick start
+## Quick start
 
 ```
 npm install
