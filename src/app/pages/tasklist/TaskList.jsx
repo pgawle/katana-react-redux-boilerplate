@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as gamesActions from '../../redux/actions/gamesActions';
-import GameName from './components/GameName';
+import Header from './components/header';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import gamesStyles from './Games.scss';
+import gamesStyles from './TaskList.scss';
 
 export class GamesClass extends React.Component {
   constructor(props) {
@@ -54,14 +54,12 @@ export class GamesClass extends React.Component {
 
     return (
       <div className={gamesStyles.wrapper}>
-        <h1>Games!!</h1>
+        <Header />
         <div>
           <Input value={inputValue} onChange={this.inputOnChange} />
-          <Button onAction={this.addGame} name="Add Game" />
+          <Button onAction={this.addGame} name="Add Task" />
         </div>
         {GamesClass.getGames(games)}
-
-        <GameName />
       </div>
     );
   }
@@ -83,7 +81,7 @@ GamesClass.propTypes = {
   addGameAction: PropTypes.func.isRequired,
   games: PropTypes.instanceOf(Array)
 };
-//
+
 GamesClass.defaultProps = {
   games: []
 };

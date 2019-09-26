@@ -97,7 +97,10 @@ with [AirBnB style guide](https://github.com/airbnb/javascript)
 
 
 
+-------
+### SVG 
+* [React svg loader](https://www.npmjs.com/package/react-svg-loader) 
+* [Svgo](https://github.com/svg/svgo) to clean and remove meta data from generated SVG
 
-
-
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 

@@ -1,56 +1,53 @@
 const path = require('path');
 const common = require('./webpack.common');
+const devRules = require('./webpack.dev.rules');
 const merge = require('webpack-merge'); // to merge common with dev confing
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Create HTML file that includes references to bundled CSS and JS.
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = merge(common, devRules, {
   mode: 'development',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/' //dynamic load js fix for hot reload
   },
   plugins: [
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/base_template.html'
+    }),
+    new BundleAnalyzerPlugin({ openAnalyzer: true }),
+    new styleLintPlugin({
+      configFile: path.resolve(__dirname, '../code-style/stylelint.config.json'),
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      emitErrors: false,
+      emitWarning: true,
+      quiet: true
     })
   ],
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader' //4. injects styles in to DOM
-          },
-          {
-            loader: 'css-loader', //3. css => commonjs
-            options: {
-              modules: {
-                // CSS Modules
-                localIdentName: '[name]_[local]_[hash:base64]' //Namespace for classes in DOM
-              },
-              importLoaders: 1
-              // localIdentName: "[name]_[local]_[hash:base64]",
-              // sourceMap: true,
-              // minimize: true
-            }
-          },
-          {
-            loader: 'postcss-loader', //2. autoprefixer
-            options: {
-              plugins: () => [require('autoprefixer')]
-            }
-          },
-          {
-            loader: 'sass-loader' //1. sass => css
-          }
-        ]
-      }
-    ]
-  },
   devServer: {
     hot: true,
-    historyApiFallback: true //Needed for react-router BrowserHistory
+    clientLogLevel: 'trace',
+    historyApiFallback: true, //Needed for react-router BrowserHistory
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: false,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false
+    }
   }
 });

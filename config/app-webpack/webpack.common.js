@@ -1,7 +1,8 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const commonRules = require('./webpack.common.rules');
+const merge = require('webpack-merge'); // to merge common with dev confing
 
-module.exports = {
+module.exports = merge(commonRules, {
   entry: {
     main: './src/app.jsx'
   },
@@ -15,43 +16,5 @@ module.exports = {
       },
       inject: true
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        resolve: {
-          extensions: ['.js', '.jsx']
-        },
-        use: [
-          {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'eslint-loader',
-            options: {
-              configFile: path.resolve(__dirname, '../code-style/eslint.config.json')
-            }
-          }
-        ]
-      },
-      {
-        test: /\.html$/,
-        exclude: /node_modules/,
-        use: ['html-loader']
-      },
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash].[ext]',
-            outputPath: 'img'
-          }
-        }
-      }
-    ]
-  }
-};
+  ]
+});
