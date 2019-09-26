@@ -1,6 +1,6 @@
-import LikeIcon from '../../../../../assets/like.svg';
 import React from 'react';
 import styles from './Header.scss';
+import LikeIcon from '../../../../../assets/like.svg';
 
 const Header = () => (
   <div className={styles.wrapper}>

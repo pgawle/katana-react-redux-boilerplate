@@ -18,7 +18,7 @@ module.exports = merge(common, devRules, {
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/base_template.html'
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: true }),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new styleLintPlugin({
       configFile: path.resolve(__dirname, '../code-style/stylelint.config.json'),
       context: 'src',
