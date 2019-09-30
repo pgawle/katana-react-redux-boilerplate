@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import buttonStyles from './Button.scss';
+import buttonStyles from './PrimaryButton.scss';
 
-class Button extends Component {
+class PrimaryButton extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -33,16 +33,16 @@ class Button extends Component {
   }
 }
 
-Button.propTypes = {
+PrimaryButton.propTypes = {
   onAction: PropTypes.func,
   name: PropTypes.string,
   disabled: PropTypes.bool
 };
 
-Button.defaultProps = {
+PrimaryButton.defaultProps = {
   onAction: () => {},
   name: 'Default Button Name',
   disabled: false
 };
 
-export default Button;
+export default PrimaryButton;

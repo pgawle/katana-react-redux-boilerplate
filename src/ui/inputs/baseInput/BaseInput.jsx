@@ -1,21 +1,21 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Input extends PureComponent {
+class BaseInput extends PureComponent {
   render() {
     const { onChange, value } = this.props;
     return <input type="text" onChange={onChange} value={value} />;
   }
 }
 
-Input.propTypes = {
+BaseInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string
 };
 
-Input.defaultProps = {
+BaseInput.defaultProps = {
   onChange: () => {},
   value: ''
 };
 
-export default Input;
+export default BaseInput;

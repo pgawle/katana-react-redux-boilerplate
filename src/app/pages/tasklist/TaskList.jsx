@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as gamesActions from '../../redux/actions/gamesActions';
 import Header from './components/header';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Input from '../../../ui/inputs/baseInput';
 import gamesStyles from './TaskList.scss';
+import Button from '../../../ui/buttons/primaryButton';
 
 export class GamesClass extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import { addParameters, configure } from '@storybook/react';
-import studioTheme from './studioTheme';
+import storybookTheme from './storybookTheme';
 const req = require.context('./stories', true, /\.stories\.js$/);
 
 addParameters({
@@ -7,7 +7,7 @@ addParameters({
     isFullScreen: false,
     showNav: true,
     showPanel: false,
-    theme: studioTheme
+    theme: storybookTheme
   }
 });
 
