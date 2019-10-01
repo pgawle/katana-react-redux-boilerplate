@@ -7,6 +7,7 @@ import Header from './components/header';
 import Input from '../../../ui/inputs/baseInput';
 import gamesStyles from './TaskList.scss';
 import Button from '../../../ui/buttons/primaryButton';
+import { selectGames } from '../../redux/tasklist/selectors';
 
 export class GamesClass extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ export class GamesClass extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    games: state.games
+    games: selectGames(state)
   };
 }
 

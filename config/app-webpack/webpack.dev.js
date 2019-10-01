@@ -8,6 +8,7 @@ const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = merge(common, devRules, {
   mode: 'development',
+  devtool: 'source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),

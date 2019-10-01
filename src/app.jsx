@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import TaskList from './app/pages/tasklist';
 import Details from './app/pages/details/Details';
 
-import store from './app/redux/store/configureStore';
+import store from './app/redux/rootStore';
 
 ReactDOM.render(
   <Provider store={store}>
