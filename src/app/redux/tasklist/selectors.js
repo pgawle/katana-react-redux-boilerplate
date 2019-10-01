@@ -1,1 +1,1 @@
-export const selectGames = state => state.tasklist;
+export const selectTasks = state => state.tasklist;

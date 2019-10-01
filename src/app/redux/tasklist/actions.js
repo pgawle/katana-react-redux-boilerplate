@@ -1,5 +1,5 @@
 import * as types from './types';
 
-export function addGame(payload) {
-  return { type: types.ADD_GAME, payload };
+export function addTask(payload) {
+  return { type: types.ADD_TASK, payload };
 }

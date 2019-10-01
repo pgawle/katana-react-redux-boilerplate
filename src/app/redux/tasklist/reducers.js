@@ -1,12 +1,12 @@
-import { ADD_GAME } from './types';
+import { ADD_TASK } from './types';
 
 const initial = {
-  todo: []
+  taskList: []
 };
 
-export default function games(state = initial.todo, action) {
+export default function taskList(state = initial.taskList, action) {
   switch (action.type) {
-    case ADD_GAME:
+    case ADD_TASK:
       return [...state, action.payload];
     default:
       return state;

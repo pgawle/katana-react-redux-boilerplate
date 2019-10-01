@@ -2,17 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as gamesActions from '../../redux/actions/gamesActions';
+import { addTask } from '../../redux/tasklist/actions';
 import Header from './components/header';
 import Input from '../../../ui/inputs/baseInput';
-import gamesStyles from './TaskList.scss';
+import styles from './TaskList.scss';
 import Button from '../../../ui/buttons/primaryButton';
-import { selectGames } from '../../redux/tasklist/selectors';
+import { selectTasks } from '../../redux/tasklist/selectors';
 
-export class GamesClass extends React.Component {
+export class TaskListClass extends React.Component {
   constructor(props) {
     super(props);
-    this.addGame = this.addGame.bind(this);
+    this.handleAddTask = this.handleAddTask.bind(this);
     this.inputOnChange = this.inputOnChange.bind(this);
 
     this.state = {
@@ -20,27 +20,27 @@ export class GamesClass extends React.Component {
     };
   }
 
-  static getGames(games) {
+  static getTasks(tasklist) {
     const elements = [];
 
-    if (!games) {
+    if (!tasklist) {
       return null;
     }
 
-    games.forEach((game, index) => {
-      const key = `game${index}`;
-      elements.push(<div key={key}>{game.name}</div>);
+    tasklist.forEach((task, index) => {
+      const key = `task${index}`;
+      elements.push(<div key={key}>{task.name}</div>);
     });
 
     return elements;
   }
 
-  addGame() {
+  handleAddTask() {
     const { inputValue } = this.state;
-    const { addGameAction } = this.props;
+    const { addNewTask } = this.props;
 
     if (inputValue !== '') {
-      addGameAction({ name: inputValue });
+      addNewTask({ name: inputValue });
       this.setState({ inputValue: '' });
     }
   }
@@ -51,16 +51,16 @@ export class GamesClass extends React.Component {
 
   render() {
     const { inputValue } = this.state;
-    const { games } = this.props;
+    const { tasklist } = this.props;
 
     return (
-      <div className={gamesStyles.wrapper}>
+      <div className={styles.wrapper}>
         <Header />
         <div>
           <Input value={inputValue} onChange={this.inputOnChange} />
-          <Button onAction={this.addGame} name="Add Task" />
+          <Button onAction={this.handleAddTask} name="Add Task" />
         </div>
-        {GamesClass.getGames(games)}
+        {TaskListClass.getTasks(tasklist)}
       </div>
     );
   }
@@ -68,26 +68,26 @@ export class GamesClass extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    games: selectGames(state)
+    tasklist: selectTasks(state)
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addGameAction: bindActionCreators(gamesActions.addGame, dispatch)
+    addNewTask: bindActionCreators(addTask, dispatch)
   };
 }
 
-GamesClass.propTypes = {
-  addGameAction: PropTypes.func.isRequired,
-  games: PropTypes.instanceOf(Array)
+TaskListClass.propTypes = {
+  addNewTask: PropTypes.func.isRequired,
+  tasklist: PropTypes.instanceOf(Array)
 };
 
-GamesClass.defaultProps = {
-  games: []
+TaskListClass.defaultProps = {
+  tasklist: []
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GamesClass);
+)(TaskListClass);
