@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { addTask } from '../../redux/tasklist/actions';
 import Header from './components/header';
-import Input from '../../../ui/inputs/baseInput';
+import Input from '../../../ui-components/inputs/baseInput';
 import styles from './TaskList.scss';
-import Button from '../../../ui/buttons/primaryButton';
+import Button from '../../../ui-components/buttons/primaryButton';
 import { selectTasks } from '../../redux/tasklist/selectors';
 
 export class TaskListClass extends React.Component {
