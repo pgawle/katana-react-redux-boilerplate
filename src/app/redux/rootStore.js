@@ -3,7 +3,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
-// import { saveState, loadState } from '../utils/persistedState';
+import { saveState, loadState } from '../utils/persistedState';
 
 // for redux debugging https://github.com/zalmoxisus/redux-devtools-extension#usage
 // const store = createStore(
@@ -20,21 +20,21 @@ const composeEnhancers =
     : compose;
 
 const sagaMiddleware = createSagaMiddleware();
-// const savedState = loadState();
+const savedState = loadState();
 
 const enhancer = composeEnhancers(
   applyMiddleware(sagaMiddleware)
   // other store enhancers if any
 );
 
-// const store = createStore(rootReducer, savedState, enhancer);
-const store = createStore(rootReducer, enhancer);
+const store = createStore(rootReducer, savedState, enhancer);
+// const store = createStore(rootReducer, enhancer);
 
-// store.subscribe(() => {
-//   saveState({
-//     auth: store.getState().auth
-//   });
-// });
+store.subscribe(() => {
+  saveState({
+    auth: store.getState().auth
+  });
+});
 
 sagaMiddleware.run(rootSaga);
 

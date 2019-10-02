@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import historyService from './app/utils/historyService';
 import TaskList from './app/pages/tasklist';
 import Details from './app/pages/details/Details';
 import Login from './app/pages/login';
@@ -11,11 +12,13 @@ import store from './app/redux/rootStore';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <PrivateRoute exact path="/" component={TaskList} />
-      <Route exact path="/details" component={Details} />
-      <Route exact path="/login" component={Login} />
-    </BrowserRouter>
+    <Router history={historyService.getHistory()}>
+      <Switch>
+        <PrivateRoute exact path="/" component={TaskList} />
+        <PrivateRoute exact path="/details" component={Details} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
