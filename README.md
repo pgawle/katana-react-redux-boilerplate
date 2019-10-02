@@ -104,3 +104,4 @@ with [AirBnB style guide](https://github.com/airbnb/javascript)
 
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
+Reset, Fonts, History, Classnames

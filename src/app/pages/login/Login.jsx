@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Input from '../../../ui-components/inputs/baseInput';
 import Button from '../../../ui-components/buttons/primaryButton';
 import * as actions from '../../redux/login/actions';
+import styles from './Login.scss';
 import { selectError, selectLoading } from '../../redux/login/selectors';
 import { selectIsAuthenticated } from '../../redux/auth/selectors';
-import loader from '../../../assets/ajax-loader.gif';
+import loader from '../../../assets/loader.gif';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -26,13 +28,22 @@ export class Login extends React.Component {
     }
 
     const { username, password } = this.state;
+    const buttonClass = classNames(styles.row, styles['button-row']);
+
     return (
       <React.Fragment>
-        Email: <Input value={username} onChange={this.usernameOnChange} />
-        <br />
-        Password: <Input type="password" value={password} onChange={this.passwordOnChange} />
-        <br />
-        <Button onAction={this.handleSubmit} name="Sign in" />
+        <div className={styles.form}>
+          <div className={styles.row}>
+            <span>Email:</span> <Input value={username} onChange={this.usernameOnChange} />
+          </div>
+          <div className={styles.row}>
+            <span>Password:</span>{' '}
+            <Input type="password" value={password} onChange={this.passwordOnChange} />
+          </div>
+          <div className={buttonClass}>
+            <Button onAction={this.handleSubmit} name="Sign in" />
+          </div>
+        </div>
       </React.Fragment>
     );
   }
@@ -59,10 +70,11 @@ export class Login extends React.Component {
     }
 
     return (
-      <div>
-        <h4>Katana.</h4>
-        <p>ReactJS, Redux working boilerplate</p>
-        <p>
+      <div className={styles.wrapper}>
+        <h4 className={styles.title}>Katana.</h4>
+        <p>Sharp starter kit for your app. Use ReactJS, Redux in minutes.</p>
+        <p>With example app included.</p>
+        <p className={styles.help}>
           username: user@user.com
           <br /> password: pass
         </p>

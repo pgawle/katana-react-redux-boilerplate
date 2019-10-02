@@ -7,8 +7,9 @@ import TaskList from './app/pages/tasklist';
 import Details from './app/pages/details/Details';
 import Login from './app/pages/login';
 import PrivateRoute from './app/components/route';
-
 import store from './app/redux/rootStore';
+
+import './app.scss';
 
 ReactDOM.render(
   <Provider store={store}>
