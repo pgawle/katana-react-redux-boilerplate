@@ -1,6 +1,18 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #cd6bab;
+$primary-color: #f9f9f9;
 
 .wrapper {
+  align-items: center;
   background: $primary-color;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.inputs {
+  padding: 10px;
+}
+
+.add {
+  margin-left: 20px;
 }

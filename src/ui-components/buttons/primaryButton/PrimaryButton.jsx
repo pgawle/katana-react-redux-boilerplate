@@ -18,8 +18,12 @@ class PrimaryButton extends Component {
   }
 
   render() {
-    const { name, disabled } = this.props;
-    const mainClass = classNames(buttonStyles.button, { [buttonStyles.disabled]: disabled });
+    const { name, disabled, className } = this.props;
+    const mainClass = classNames(
+      buttonStyles.button,
+      { [buttonStyles.disabled]: disabled },
+      className
+    );
 
     return (
       <input
@@ -36,13 +40,15 @@ class PrimaryButton extends Component {
 PrimaryButton.propTypes = {
   onAction: PropTypes.func,
   name: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  className: PropTypes.string
 };
 
 PrimaryButton.defaultProps = {
   onAction: () => {},
   name: 'Default Button Name',
-  disabled: false
+  disabled: false,
+  className: ''
 };
 
 export default PrimaryButton;

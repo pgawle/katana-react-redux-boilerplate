@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { addTask } from '../../redux/tasklist/actions';
 import Header from './components/header';
+import List from './components/list';
 import Input from '../../../ui-components/inputs/baseInput';
 import styles from './TaskList.scss';
 import Button from '../../../ui-components/buttons/primaryButton';
@@ -18,21 +19,6 @@ export class TaskListClass extends React.Component {
     this.state = {
       inputValue: ''
     };
-  }
-
-  static getTasks(tasklist) {
-    const elements = [];
-
-    if (!tasklist) {
-      return null;
-    }
-
-    tasklist.forEach((task, index) => {
-      const key = `task${index}`;
-      elements.push(<div key={key}>{task.name}</div>);
-    });
-
-    return elements;
   }
 
   handleAddTask() {
@@ -56,11 +42,11 @@ export class TaskListClass extends React.Component {
     return (
       <div className={styles.wrapper}>
         <Header />
-        <div>
+        <div className={styles.inputs}>
           <Input value={inputValue} onChange={this.inputOnChange} />
-          <Button onAction={this.handleAddTask} name="Add Task" />
+          <Button className={styles.add} onAction={this.handleAddTask} name="Add Task" />
         </div>
-        {TaskListClass.getTasks(tasklist)}
+        <List tasks={tasklist} />
       </div>
     );
   }
