@@ -14,6 +14,7 @@ export class TaskListClass extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.inputOnChange = this.inputOnChange.bind(this);
 
     this.state = {
@@ -31,6 +32,12 @@ export class TaskListClass extends React.Component {
     }
   }
 
+  handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.handleAddTask();
+    }
+  }
+
   inputOnChange(event) {
     this.setState({ inputValue: event.target.value });
   }
@@ -43,7 +50,7 @@ export class TaskListClass extends React.Component {
       <div className={styles.wrapper}>
         <Header />
         <div className={styles.inputs}>
-          <Input value={inputValue} onChange={this.inputOnChange} />
+          <Input value={inputValue} onChange={this.inputOnChange} onKeyDown={this.handleKeyDown} />
           <Button className={styles.add} onAction={this.handleAddTask} name="Add Task" />
         </div>
         <List tasks={tasklist} />
