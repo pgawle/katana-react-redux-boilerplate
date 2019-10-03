@@ -11,3 +11,15 @@
   margin-left: 20px;
   width: 30px;
 }
+
+.logout {
+  font-size: 15px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

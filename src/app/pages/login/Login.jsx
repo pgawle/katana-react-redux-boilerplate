@@ -73,7 +73,7 @@ export class Login extends React.Component {
       <div className={styles.wrapper}>
         <h4 className={styles.title}>Katana.</h4>
         <p>Sharp starter kit for your app. Use ReactJS, Redux in minutes.</p>
-        <p>With example app included.</p>
+        <p>Example app included.</p>
         <p className={styles.help}>
           username: user@user.com
           <br /> password: pass
