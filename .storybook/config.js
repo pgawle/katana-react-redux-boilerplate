@@ -1,6 +1,8 @@
 import { addParameters, configure } from '@storybook/react';
 import storybookTheme from './storybookTheme';
 const req = require.context('./stories', true, /\.stories\.js$/);
+import '../src/app.scss';
+import './base.scss';
 
 addParameters({
   options: {
