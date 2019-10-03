@@ -1,94 +1,66 @@
 # Katana Boilerplate (React + Redux)
-_last readme update: 26 July 2019_
 
-
-## Quick start
+#### Quick start
 
 ```
 npm install
 npm start
 ```
 
-## More info
-### How to install?
+#### Commands
 
 ```
-npm install
+npm install             /* install modules */
+npm start               /* run dev */
+npm run build           /* create build in dist folder */
+npm run serve-prod      /* run locally disct folder */
+npm run test            /* run tests */
+npm run lint:js         /* lint js, jsx */
+npm run lint:scss       /* lint scss */
+npm run storybook       /* open storybook */
 ```
 
-### How to run locally?
+#### Other info
 
-```
-npm start
-```
-
-### How to build for production?
-
-```
-npm run build
-```
-
-### How to run build(/dist) locally (for testing purposes)?
-
-Dashboard will be available on [localhost:3000](http://localhost:3000)
-```
-npm run serve-prod
-```
-
-### How to run tests?
-
-```
-npm run test
-```
-
-### How to check linters?
-
-##### lint all (js,scss)
-```
-npm run lint
-```
-##### lint js 
-```
-npm run lint:js
-```
-##### lint scss 
-```
-npm run lint:scss
-```
-### How to run storybook?
-
-```
-npm run storybook
-```
+1. When running app in dev mode Webpack Bundle Analyzer is available on: http://127.0.0.1:8888
+2. There is git pre commit hook that runs lints against the code. 
 
 
-## Used in project
+#### Stack
 
-### Building, bundling etc.
+##### Building, bundling, other
 
 * [Webpack 4](https://www.google.com)
 * [Babel](https://babeljs.io/) 
 * [PostCSS](https://postcss.org/)
+* [Webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+* [Webpack speed measure plugin](https://github.com/stephencookdev/speed-measure-webpack-plugin)
 
-### Javascript
+##### Javascript
 
 * [React](https://reactjs.org/)
 * [React Router](https://reacttraining.com/react-router/)
 * [Redux](https://redux.js.org/)
+* [Redux-Saga](https://github.com/redux-saga/redux-saga)
 
 
-### Styles
+##### Styles
 
 * [Sass](https://sass-lang.com/)
 * [CSS modules](https://github.com/css-modules/css-modules)
 * [classNames package](https://github.com/JedWatson/classnames) 
 
-### Testing
+##### SVG 
+
+* [React svg loader](https://www.npmjs.com/package/react-svg-loader) 
+* [Svgo](https://github.com/svg/svgo)
+
+##### Testing
 
 * [Enzyme](https://airbnb.io/enzyme/)
 * [Jest](https://jestjs.io/)
 
-### Linting, code format
+##### Linting, code format
 
 * [Eslint](https://eslint.org/)
 with [AirBnB style guide](https://github.com/airbnb/javascript)
@@ -97,11 +69,3 @@ with [AirBnB style guide](https://github.com/airbnb/javascript)
 
 
 
--------
-### SVG 
-* [React svg loader](https://www.npmjs.com/package/react-svg-loader) 
-* [Svgo](https://github.com/svg/svgo) to clean and remove meta data from generated SVG
-
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-
-Reset, Fonts, History, Classnames
