@@ -6,6 +6,5 @@ import login from './login/sagas';
  * saga to yield all others
  */
 export default function* rootSaga() {
-  // yield all([login(), logout(), games(), game()]);
   yield all([login()]);
 }

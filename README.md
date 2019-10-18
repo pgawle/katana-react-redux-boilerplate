@@ -17,7 +17,7 @@ npm run serve-prod      /* run locally disct folder */
 npm run test            /* run tests */
 npm run lint:js         /* lint js, jsx */
 npm run lint:scss       /* lint scss */
-npm run storybook       /* open storybook */
+npm run storybook       /* run storybook */
 ```
 
 #### Other info
