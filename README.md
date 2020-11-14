@@ -30,7 +30,7 @@ npm run storybook       /* run storybook */
 
 ##### Building, bundling, other
 
-* [Webpack 4](https://www.google.com)
+* [Webpack 4](https://webpack.js.org/)
 * [Babel](https://babeljs.io/) 
 * [PostCSS](https://postcss.org/)
 * [Webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
